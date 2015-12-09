@@ -27,5 +27,14 @@ The result glob, or array of globs if any of paths or globs are array.
 #### Example
 ```
 var join = require('globjoin');
-var globstr = join(__dirname, '**/*.{png,jpg,gif}');
+var globs = join(__dirname, '**/*.{png,jpg,gif}');
+```
+
+#### `globjoin.exist(path)`
+A filter that check if the given path exists.
+
+#### Example
+```
+var join = require('globjoin');
+var globs = join(['views', 'styles'], '**/*.{png,jpg,gif}', join.exist);
 ```
