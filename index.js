@@ -5,38 +5,9 @@ var FileSystem = require('fs'),
 	glob = require('glob'),
 	globby = require('globby');
 
-function join(paths, globs, force) {
-	var filter = _filter(force);
+function join(paths, globs, filter) {
+	filter = _filter(filter);
 	return _apply(paths, _path);
-
-	function _filter(force) {
-		if (typeof force === 'boolean') {
-			return function () {
-				return force;
-			};
-		} else if (typeof force === 'function') {
-			return force;
-		}
-		return function(path) {
-			try {
-				return FileSystem.statSync(path).isDirectory();
-			} catch (ex) {
-				// the directory path not exist;
-				return false;
-			}
-		};
-	}
-
-	function _apply(value, fn) {
-		var values;
-
-		if (Array.isArray(value)) {
-			return value.reduce(function (result, value) {
-				return result.concat(fn(value))
-			}, []);
-		}
-		return fn(value);
-	}
 
 	function _path(path) {
 		if (filter(path)) {
@@ -48,7 +19,7 @@ function join(paths, globs, force) {
 			return _join(path, globs);
 		}
 
-		// path not exist or not a folder, assumes that globs override path.
+		// path not exist or not a folder or not forced, assumes that globs override path.
 		return globs;
 	}
 
@@ -64,5 +35,36 @@ function join(paths, globs, force) {
 		return negative + Path.join(path, glob);
 	}
 }
+
+function _filter(force) {
+	if (typeof force === 'function') {
+		return force;
+	}
+	return join.force;
+}
+
+function _apply(value, fn) {
+	if (Array.isArray(value)) {
+		return value.reduce(function (result, value) {
+			return result.concat(fn(value))
+		}, []);
+	}
+	return fn(value);
+}
+
+/**
+ * Check if the given directory path exist.
+ */
+join.exist = function (path) {
+	try {
+		return FileSystem.statSync(path).isDirectory();
+	} catch (ex) {
+		return false;
+	}
+};
+
+join.force = function () {
+	return true;
+};
 
 module.exports = join;
