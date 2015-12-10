@@ -1,5 +1,4 @@
-var	expect = require('chai').expect,
-	test = require('mocha-cases');
+var	test = require('mocha-cases');
 
 var join = require('../');
 
