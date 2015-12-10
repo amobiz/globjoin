@@ -1,40 +1,35 @@
 # globjoin
 
-Adding base paths to globs.
+Join paths and globs.
 
 ## Install
 ```
-npm install --save https://github.com/amobiz/globjoin.git
+$ npm install --save https://github.com/amobiz/globjoin.git
 ```
 
 ## API
 
 ### `globjoin(paths, globs, [filter])`
-Add base paths to globs.
+Join paths and globs.
 
-Note: unlike Node's [path.join()](https://nodejs.org/api/path.html#path_path_join_path1_path2) that join all arguments together and normalize the resulting path, `globjoin` take either a path, or an array of paths and treat them as separate folders.
+Like Node's [path.join()](https://nodejs.org/api/path.html#path_path_join_path1_path2) that join all arguments together and normalize the resulting path, `globjoin` takes arbitrary number of paths and/or arrays of paths, join them together and take care of negative globs.
 #### Context
 Don't care.
 #### Parameters
-##### `paths`
-The path or array of paths to add.
-##### `globs`
-The glob or array of globs to join.
-##### `filter`
-Optional. With signature: `function(path): boolean`. Can be used to validate existent of folder, or to filter out unwanted folders.
+##### `paths/globs`
+The paths/globs or arrays of paths/globs to join.
 #### Returns
-The result glob, or array of globs if any of paths or globs are array.
+The result glob, or array of globs if any of paths/globs are array.
 #### Example
 ```
 var join = require('globjoin');
-var globs = join(__dirname, '**/*.{png,jpg,gif}');
+var globs1 = join(__dirname, ['**/*.js', '!**/test*.js']);
+var globs2 = join('test', 'fixture', 'app', ['views', '!services'], ['**/*', '!*.{js,json,coffee,ts}']);
 ```
 
-#### `globjoin.exist(path)`
-A filter that check if the given path exists.
+Check out test for more examples.
 
-#### Example
+## Test
 ```
-var join = require('globjoin');
-var globs = join(['views', 'styles'], '**/*.{png,jpg,gif}', join.exist);
+$ npm test
 ```
