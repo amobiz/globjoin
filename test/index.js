@@ -1,5 +1,4 @@
-var	Chai = require('chai'),
-	expect = Chai.expect,
+var	expect = require('chai').expect,
 	test = require('mocha-cases');
 
 var join = require('../');
@@ -26,7 +25,7 @@ var cases = [{
 	expected: ['test/fixture/app/views/*.js', '!test/fixture/app/views/*.{coffee,ts}', '!test/fixture/app/services/*.js', '!test/fixture/app/services/*.{coffee,ts}']}];
 
 describe('globjoin()', function () {
-	test(cases, function (value) {
-		return join.apply(null, value);
+	test(cases, function (args) {
+		return join.apply(null, args);
 	});
 });
