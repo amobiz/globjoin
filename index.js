@@ -1,46 +1,16 @@
 'use strict';
 
-var FileSystem = require('fs'),
-	Path = require('path'),
-	glob = require('glob'),
-	globby = require('globby');
+var Path = require('path');
 
-function join(paths, globs, filter) {
-	filter = _filter(filter);
-	return _apply(paths, _path);
-
-	function _path(path) {
-		if (filter(path)) {
-			if (Array.isArray(globs)) {
-				return globs.map(function (glob) {
-					return _join(path, glob);
-				});
-			}
-			return _join(path, globs);
-		}
-
-		// path not exist or not a folder or not forced, assumes that globs override path.
-		return globs;
-	}
-
-	function _join(path, glob) {
-		var negative;
-
-		if (glob[0] === '!') {
-			negative = '!';
-			glob = glob.substr(1);
-		} else {
-			negative = '';
-		}
-		return negative + Path.join(path, glob);
-	}
-}
-
-function _filter(force) {
-	if (typeof force === 'function') {
-		return force;
-	}
-	return join.force;
+function join(/* globs */) {
+	var args = Array.prototype.splice.call(arguments, 0);
+	return args.reduce(function (result, globs) {
+		return _apply(result, function (path) {
+			return _apply(globs, function (glob) {
+				return _join(path, glob);
+			});
+		});
+	}, '');
 }
 
 function _apply(value, fn) {
@@ -52,19 +22,19 @@ function _apply(value, fn) {
 	return fn(value);
 }
 
-/**
- * Check if the given directory path exist.
- */
-join.exist = function (path) {
-	try {
-		return FileSystem.statSync(path).isDirectory();
-	} catch (ex) {
-		return false;
-	}
-};
+function _join(path, glob) {
+	var negative;
 
-join.force = function () {
-	return true;
-};
+	if (glob[0] === '!') {
+		glob = glob.substr(1);
+		if (path[0] === '!') {
+			negative = '';
+		} else {
+			negative = '!';
+		}
+		return negative + Path.join(path, glob);
+	}
+	return Path.join(path, glob);
+}
 
 module.exports = join;
