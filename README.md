@@ -4,7 +4,7 @@ Join paths and globs.
 
 ## Install
 ```
-$ npm install --save https://github.com/amobiz/globjoin.git
+$ npm install --save globjoin
 ```
 
 ## API
