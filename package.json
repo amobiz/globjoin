@@ -1,19 +1,16 @@
 {
   "name": "globjoin",
   "version": "0.1.0",
-  "description": "",
+  "description": "Join paths and globs.",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "glob",
+    "negative glob",
     "path",
-    "path",
-    "join"
+    "path join"
   ],
   "author": "Amobiz",
   "license": "MIT",
@@ -23,7 +20,5 @@
     "mocha-cases": "^0.1.4"
   },
   "dependencies": {
-    "glob": "^6.0.1",
-    "globby": "^4.0.0"
   }
 }
