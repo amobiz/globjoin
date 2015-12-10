@@ -7,10 +7,23 @@
     "test": "mocha"
   },
   "keywords": [
+	"array",
     "glob",
+	"globs",
+	"glob join",
+	"globs join",
+	"globbing",
+	"multiple",
+	"multi",
     "negative glob",
     "path",
-    "path join"
+    "path join",
+    "paths",
+    "paths join",
+    "pattern",
+    "patterns",
+	"wildcard",
+	"wildcards"
   ],
   "author": "Amobiz",
   "license": "MIT",
