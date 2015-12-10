@@ -9,7 +9,7 @@ $ npm install --save globjoin
 
 ## API
 
-### `globjoin(paths, globs, [filter])`
+### `globjoin(globs...)`
 Join paths and globs.
 
 Like Node's [path.join()](https://nodejs.org/api/path.html#path_path_join_path1_path2) that join all arguments together and normalize the resulting path, `globjoin` takes arbitrary number of paths and/or arrays of paths, join them together and take care of negative globs.
