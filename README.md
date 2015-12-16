@@ -33,3 +33,9 @@ Check out test for more examples.
 ``` bash
 $ npm test
 ```
+
+## License
+MIT
+
+## Author
+[Amobiz](https://github.com/amobiz)
