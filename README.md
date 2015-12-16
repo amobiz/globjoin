@@ -3,8 +3,8 @@
 Join paths and globs.
 
 ## Install
-```
-$ npm install --save globjoin
+``` bash
+$ npm install globjoin
 ```
 
 ## API
@@ -21,7 +21,7 @@ The paths/globs or arrays of paths/globs to join.
 #### Returns
 The result glob, or array of globs if any of paths/globs are array.
 #### Example
-```
+``` javascript
 var join = require('globjoin');
 var globs1 = join(__dirname, ['**/*.js', '!**/test*.js']);
 var globs2 = join('test', 'fixture', 'app', ['views', '!services'], ['**/*', '!*.{js,json,coffee,ts}']);
@@ -30,6 +30,6 @@ var globs2 = join('test', 'fixture', 'app', ['views', '!services'], ['**/*', '!*
 Check out test for more examples.
 
 ## Test
-```
+``` bash
 $ npm test
 ```
