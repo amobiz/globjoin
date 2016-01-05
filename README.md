@@ -2,6 +2,10 @@
 
 Join paths and globs.
 
+[![MIT](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/amobiz/globjoin/blob/master/LICENSE) [![npm version](https://badge.fury.io/js/globjoin.svg)](http://badge.fury.io/js/globjoin) [![David Dependency Badge](https://david-dm.org/amobiz/globjoin.svg)](https://david-dm.org/amobiz/globjoin)
+
+[![NPM](https://nodei.co/npm/globjoin.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/globjoin.png?downloads=true&downloadRank=true&stars=true) [![NPM](https://nodei.co/npm-dl/globjoin.png?months=6&height=3)](https://nodei.co/npm/globjoin/)
+
 ## Install
 ``` bash
 $ npm install globjoin
