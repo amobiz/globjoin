@@ -3,6 +3,10 @@
   "version": "0.1.2",
   "description": "Join paths and globs.",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amobiz/globjoin.git"
+  },
   "scripts": {
     "test": "mocha"
   },
