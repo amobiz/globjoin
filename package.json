@@ -7,14 +7,14 @@
     "test": "mocha"
   },
   "keywords": [
-	"array",
+    "array",
     "glob",
-	"globs",
-	"glob join",
-	"globs join",
-	"globbing",
-	"multiple",
-	"multi",
+    "globs",
+    "glob join",
+    "globs join",
+    "globbing",
+    "multiple",
+    "multi",
     "negative glob",
     "path",
     "path join",
@@ -22,8 +22,8 @@
     "paths join",
     "pattern",
     "patterns",
-	"wildcard",
-	"wildcards"
+    "wildcard",
+    "wildcards"
   ],
   "author": "Amobiz",
   "license": "MIT",
@@ -33,5 +33,6 @@
     "mocha-cases": "^0.1.4"
   },
   "dependencies": {
+    "mocha-cases": "^0.1.8"
   }
 }
