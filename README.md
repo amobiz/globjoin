@@ -33,10 +33,19 @@ var globs2 = join('test', 'fixture', 'app', ['views', '!services'], ['**/*', '!*
 
 Check out test for more examples.
 
+## Issues
+
+[Issues](https://github.com/amobiz/globjoin/issues)
+
 ## Test
+
 ``` bash
 $ npm test
 ```
+
+## Changelog
+
+[Changelog](./CHANGELOG.md)
 
 ## License
 MIT

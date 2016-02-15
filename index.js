@@ -1,11 +1,12 @@
 'use strict';
 
 var Path = require('path');
+var slice = Array.prototype.slice;
 
 function join(/* globs */) {
 	var args;
 
-	args = Array.prototype.splice.call(arguments, 0);
+	args = slice.call(arguments, 0);
 	return args.reduce(function (result, globs) {
 		return _apply(result, function (path) {
 			return _apply(globs, function (glob) {
