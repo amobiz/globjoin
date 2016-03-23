@@ -48,7 +48,7 @@ $ npm test
 [Changelog](./CHANGELOG.md)
 
 ## License
-MIT
+[MIT](https://opensource.org/licenses/MIT)
 
 ## Author
 [Amobiz](https://github.com/amobiz)
