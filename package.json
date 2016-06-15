@@ -29,9 +29,9 @@
   },
   "homepage": "https://github.com/amobiz/globjoin",
   "devDependencies": {
+    "eslint": "^2.12.0",
     "mocha": "^2.3.4",
-    "mocha-cases": "^0.1.4"
+    "mocha-cases": "^0.1.10"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
