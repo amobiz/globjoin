@@ -23,7 +23,7 @@ var cases = [{
 }, {
 	name: 'should handle negative globs',
 	value: ['test/fixture/app', ['views', '!services'], ['*.js', '!*.{coffee,ts}']],
-	expected: ['test/fixture/app/views/*.js', '!test/fixture/app/views/*.{coffee,ts}', '!test/fixture/app/services/*.js', '!test/fixture/app/services/*.{coffee,ts}']
+	expected: ['test/fixture/app/views/*.js', '!test/fixture/app/views/*.{coffee,ts}', '!test/fixture/app/services/*.js', 'test/fixture/app/services/*.{coffee,ts}']
 }];
 
 describe('globjoin()', function () {
