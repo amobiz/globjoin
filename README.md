@@ -2,34 +2,50 @@
 
 Join paths and globs.
 
-[![MIT](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/amobiz/globjoin/blob/master/LICENSE) [![npm version](https://badge.fury.io/js/globjoin.svg)](http://badge.fury.io/js/globjoin) [![David Dependency Badge](https://david-dm.org/amobiz/globjoin.svg)](https://david-dm.org/amobiz/globjoin)
-[![Build Status](https://travis-ci.org/amobiz/globjoin.svg?branch=master)](https://travis-ci.org/amobiz/globjoin)
+![npm](https://shieldcn.dev/group/npm/license/globjoin+/npm/globjoin+npm/dw/globjoin+github/amobiz/globjoin/stars.svg)
 
-[![NPM](https://nodei.co/npm/globjoin.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/globjoin.png?downloads=true&downloadRank=true&stars=true) [![NPM](https://nodei.co/npm-dl/globjoin.png?months=6&height=3)](https://nodei.co/npm/globjoin/)
+![chart](https://shieldcn.dev/chart/npm/globjoin.svg)
 
 ## Install
-``` bash
+
+```bash
 $ npm install globjoin
 ```
 
 ## API
 
-### `globjoin(globs...)`
-Join paths and globs.
+Like Node's [`path.join()`](https://nodejs.org/api/path.html#path_path_join_path1_path2), which joins all arguments and normalizes the resulting path, `globjoin` accepts an arbitrary number of paths and/or arrays of globs, joins them together, and handles negative globs.
 
-Like Node's [path.join()](https://nodejs.org/api/path.html#path_path_join_path1_path2) that join all arguments together and normalize the resulting path, `globjoin` takes arbitrary number of paths and/or arrays of paths, join them together and take care of negative globs.
-#### Context
-Don't care.
-#### Parameters
-##### `paths/globs`
-The paths/globs or arrays of paths/globs to join.
-#### Returns
-The result glob, or array of globs if any of paths/globs are array.
+```typescript
+function globjoin(...globs: Array<string>): string;
+
+function globjoin(...globs: Array<string | string[]>): string[];
+```
+
+Important: Starting with version 1.0.0, negative globs are handled differently. Negative globs are now treated as negations of the corresponding path segments. For example:
+
+`globjoin(["src", "!app", "!view"])` => `"src/app/view"`
+
+While in version 0.1.4, the same input produced:
+
+`globjoin(["src", "!app", "!view"])` => `"!src/app/view"`
+
+This is a breaking behavior change to be aware of when upgrading to version 1.0.0.
+
 #### Example
-``` javascript
-var join = require('globjoin');
-var globs1 = join(__dirname, ['**/*.js', '!**/test*.js']);
-var globs2 = join('test', 'fixture', 'app', ['views', '!services'], ['**/*', '!*.{js,json,coffee,ts}']);
+
+```typescript
+import globjoin from "globjoin";
+
+const globs1 = globjoin("src", ["**/*.js", "!**/test*.js"]);
+
+const globs2 = globjoin(
+  "test",
+  "fixture",
+  "app",
+  ["views", "!services"],
+  ["**/*", "!*.{js,json,coffee,ts}"],
+);
 ```
 
 Check out test for more examples.
@@ -40,7 +56,7 @@ Check out test for more examples.
 
 ## Test
 
-``` bash
+```bash
 $ npm test
 ```
 
@@ -49,7 +65,13 @@ $ npm test
 [Changelog](./CHANGELOG.md)
 
 ## License
+
 [MIT](https://opensource.org/licenses/MIT)
 
 ## Author
+
 [Amobiz](https://github.com/amobiz)
+
+## Contributor
+
+[StreetStrider](https://github.com/StreetStrider)

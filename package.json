@@ -1,14 +1,38 @@
 {
   "name": "globjoin",
+  "type": "module",
   "version": "1.0.0",
   "description": "Join paths and globs.",
-  "main": "index.js",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/amobiz/globjoin.git"
   },
   "scripts": {
-    "test": "mocha"
+    "build": "tsdown --minify",
+    "coverage": "vitest run --coverage",
+    "dev": "tsdown --watch",
+    "lint": "eslint",
+    "prepack": "pnpm run build",
+    "typecheck": "tsc --noEmit",
+    "tdd": "vitest",
+    "test": "vitest run"
   },
   "keywords": [
     "array",
@@ -22,16 +46,30 @@
     "patterns",
     "wildcard"
   ],
-  "author": "Amobiz",
+  "author": "Amobiz <amobiz.tw+github@gmail.com> (https://github.com/amobiz)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/amobiz/globjoin/issues"
   },
   "homepage": "https://github.com/amobiz/globjoin",
-  "devDependencies": {
-    "eslint": "^6.6.0",
-    "mocha": "^2.3.4",
-    "mocha-cases": "^0.1.10"
+  "engines": {
+    "node": ">=18.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/core": "^0.18.5",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^18.19.130",
+    "@vitest/coverage-v8": "5.0.1",
+    "empirical-cases": "^0.4.0",
+    "eslint": "^10.10.0",
+    "globals": "^17.12.0",
+    "publint": "^0.3.24",
+    "tsdown": "^0.22.14",
+    "typescript-eslint": "^8.70.0",
+    "vitest": "^5.0.1"
+  },
+  "packageManager": "pnpm@12.4.2+sha512.08adc6613180275c7c9edada39dcf08c9c61ad4e7eaf330a4f3461f102b0f907423454d117f98e72d47fef0616070644d7bffc973a6a57f5090a6d7c368b07c9"
 }
