@@ -31,6 +31,7 @@ function _join(path, glob) {
 	if (glob[0] === '!') {
 		positive = glob.substr(1);
 		if (path[0] === '!') {
+			path = path.substr(1);
 			negative = '';
 		} else {
 			negative = '!';
