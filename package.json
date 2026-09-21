@@ -64,7 +64,7 @@
     "@types/node": "^18.19.130",
     "@vitest/coverage-v8": "5.0.1",
     "empirical-cases": "^0.4.0",
-    "eslint": "^10.10.0",
+    "eslint": "^10.11.0",
     "globals": "^17.12.0",
     "publint": "^0.3.24",
     "tsdown": "^0.22.14",
